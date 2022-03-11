@@ -96,24 +96,33 @@ function Matches() {
       {/* Matches list container */}
       <div className="gridContainer">
         {matches.map((match: Match) => {
-          <div className="gridItem item1">
-            <p key={match.id} className="time">
-              {match.utcDate}
-            </p>
-          </div>;
-        })}
+          return (
+            <div>
+              {/* Match time div */}
+              <div className="gridItem item1">
+                <p key={match.id} className="time">
+                  {match.utcDate.slice(11, 16)}
+                </p>
+              </div>
 
-        {/* // <div className="gridItem item2">
-        //   <span>logo </span>
-        //   {matches.homeTeam.name}
-        // </div>
-        // <div className="gridItem item3">Score1</div>
-        // <div className="gridItem item4">
-        //   <span>logo </span>
-        //   {match.awayTeam.name}
-        // </div>
-        // <div className="gridItem item5">Score2</div>
-      // })} */}
+              {/* Home team name div */}
+              <div className="gridItem item2">{match.homeTeam.name}</div>
+
+              {/* Home team score div */}
+              <div className="gridItem item3">
+                {match.score.fullTime.homeTeam}
+              </div>
+
+              {/* Away team name div */}
+              <div className="gridItem item4">{match.awayTeam.name}</div>
+
+              {/* Away team score div */}
+              <div className="gridItem item5">
+                {match.score.fullTime.awayTeam}
+              </div>
+            </div>
+          );
+        })}
       </div>
     </>
   );

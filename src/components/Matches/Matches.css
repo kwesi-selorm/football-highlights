@@ -50,5 +50,6 @@ html {
   grid-template-areas:
     "A B C"
     "A D E";
+  grid-auto-flow: row;
   width: 100%;
 }
