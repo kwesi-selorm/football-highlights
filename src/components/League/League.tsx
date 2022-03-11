@@ -5,14 +5,16 @@ type Props = {
   imgLink: string;
   leagueName: string;
   name?: string;
-  function?: MouseEventHandler<HTMLButtonElement> | undefined;
+  function1?: MouseEventHandler<HTMLButtonElement> | undefined;
+  function2?: MouseEventHandler<HTMLButtonElement> | undefined;
 };
 
 function League(props: Props) {
   return (
     <button
       className="leagueButton"
-      onClick={props.function}
+      onClick={props.function1}
+      onMouseDown={props.function2}
       name={props.name}
     >
       <span>

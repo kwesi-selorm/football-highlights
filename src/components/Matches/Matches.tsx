@@ -1,15 +1,26 @@
 import "./Matches.css";
 import { useEffect, useState } from "react";
+import axios from "axios";
 import League from "../League/League";
+import MatchTimes from "../MatchTimes/MatchTimes";
 
 interface HomeTeam {
+  id?: number;
   name: string;
-  logo: string;
 }
 
 interface AwayTeam {
+  id?: number;
   name: string;
-  logo: string;
+}
+
+interface FullTime {
+  homeTeam: number;
+  awayTeam: number;
+}
+
+interface Score {
+  fullTime: FullTime;
 }
 
 interface Match {
@@ -18,79 +29,93 @@ interface Match {
   utcDate: string;
   homeTeam: HomeTeam;
   awayTeam: AwayTeam;
+  score: Score;
 }
 
 function Matches() {
-  let matches: Match[] = [];
-  const [data, setData] = useState(null);
+  const [matches, setMatches] = useState([]);
 
+  // Function to change name of league used in fetching match data
   function handleClick() {
     console.log("clicked");
   }
 
   // Implement data fetching using axios, extract matches details
   useEffect(() => {
-    fetch(
-      "https://api.football-data.org/v2/competitions/PL/matches?dateFrom=2022-03-09&dateTo=2022-03-09",
-      {
+    axios
+      .request({
         method: "GET",
+        url: "https://api.football-data.org/v2/competitions/PL/matches?dateFrom=2022-03-10&dateTo=2022-03-10",
         headers: { "X-Auth-Token": "ed952d5bc85e4aa2821b1b08b622bdcc" },
-      }
-    )
-      .then((response) => response.json())
-      .then(setData)
-      .catch((err) => console.error(err));
+      })
+      .then((response) => {
+        console.log(response.data.matches);
+        setMatches(response.data.matches);
+        // console.log(matches);
+      })
+      .catch((error) => console.error(error));
   }, []);
 
-  console.log("data:", data);
-
   return (
-    <div className="gridContainer">
+    <>
+      {/* League buttons */}
       <div className="leagues">
         <League
           imgLink="https://img.icons8.com/color/48/000000/england.png"
           leagueName="Premier League"
-          function={handleClick}
+          function1={handleClick}
+          function2={handleClick}
           name="PL"
         />
         <League
           imgLink="https://img.icons8.com/color/48/000000/spain-2.png"
           leagueName="La Liga"
-          function={handleClick}
+          function1={handleClick}
+          function2={handleClick}
           name="PD"
         />
         <League
           imgLink="https://img.icons8.com/color/48/000000/italy.png"
           leagueName="Serie A"
-          function={handleClick}
+          function1={handleClick}
+          function2={handleClick}
           name="SA"
         />
         <League
           imgLink="https://img.icons8.com/color/48/000000/germany.png"
           leagueName="Bundesliga"
-          function={handleClick}
+          function1={handleClick}
+          function2={handleClick}
           name="BL1"
         />
       </div>
 
-      {/* {matches.map((match) => {
-        <div className="gridItem item1">
-          <p key={match.id} className="time">
-            {match.utcDate}
-          </p>
-        </div>; */}
-      {/* // <div className={cx(matchStyles.gridItem, matchStyles.item2)}>
+      {/* Match times component */}
+      <MatchTimes />
+
+      {/* Matches list container */}
+      <div className="gridContainer">
+        {matches.map((match: Match) => {
+          <div className="gridItem item1">
+            <p key={match.id} className="time">
+              {match.utcDate}
+            </p>
+          </div>;
+        })}
+
+        {/* // <div className="gridItem item2">
         //   <span>logo </span>
         //   {matches.homeTeam.name}
         // </div>
-        // <div className={cx(matchStyles.gridItem, matchStyles.item3)}>Score1</div>
-        // <div className={cx(matchStyles.gridItem, matchStyles.item4)}>
+        // <div className="gridItem item3">Score1</div>
+        // <div className="gridItem item4">
         //   <span>logo </span>
         //   {match.awayTeam.name}
         // </div>
-        // <div className={cx(matchStyles.gridItem, matchStyles.item5)}>Score2</div>
-      })} */}
-    </div>
+        // <div className="gridItem item5">Score2</div>
+      // })} */}
+      </div>
+    </>
   );
 }
 

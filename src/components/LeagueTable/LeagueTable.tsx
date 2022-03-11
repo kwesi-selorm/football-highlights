@@ -1,4 +1,5 @@
 import { MouseEvent, useEffect, useState } from "react";
+import axios from "axios";
 import League from "../League/League";
 import "./LeagueTable.css";
 
@@ -18,46 +19,45 @@ interface Club {
   team: Team;
 }
 
-type Data = {
-  standings: [];
-};
-
 // https://stackoverflow.com/questions/54513548/destructure-a-function-parameter-in-typescript
 function LeagueTable() {
-  const [leagueAbbrev, setLeagueAbbrev] = useState("PL");
-  const [data, setData] = useState(null);
-  const [table, setTable] = useState(null);
+  const [selectedLeague, setSelectedLeague] = useState("PL");
+  const [, setData] = useState([]);
+  const [table, setTable] = useState([]);
 
-  function handleClick(e: MouseEvent) {
-    const target = e.target as HTMLButtonElement;
-    const selectedLeague = target.name;
-    setLeagueAbbrev(selectedLeague);
-    console.log(leagueAbbrev);
+  // Change the league name in the API request URL when the league button is clicked.
+  //handleClick function can be improved
+  function handleClick(event: MouseEvent) {
+    event.preventDefault();
+    const target = event.currentTarget as HTMLButtonElement;
+    setSelectedLeague(target.name);
+    console.log(selectedLeague);
   }
 
+  // Fetch data from football-data API using axios
   useEffect(() => {
-    fetch("https://api.football-data.org/v2/competitions/PL/standings", {
-      method: "GET",
-      headers: {
-        "X-Auth-Token": "ed952d5bc85e4aa2821b1b08b622bdcc",
-      },
-    })
-      .then((response) => response.json())
-      .then(setData)
-      .catch((err) => console.error(err));
-  }, []);
+    axios
+      .request({
+        method: "GET",
+        url:
+          "https://api.football-data.org/v2/competitions/" +
+          selectedLeague +
+          "/standings",
+        headers: {
+          "X-Auth-Token": "ed952d5bc85e4aa2821b1b08b622bdcc",
+        },
+      })
+      .then(function (response) {
+        // Set the response data with the standings property
+        setData(response.data.standings);
 
-  if (data) {
-    console.log("data:", data);
-    setTable(data.standings[0].table);
-  }
-
-  // console.log(data.standings)
-  // const table = data.standings[0].table;
-
-  // const standings =
-  //  // table is an array of 20 club objects
-  //  const table = standings[0].table;
+        // Set the table state with the table property. Table is an array of 20 club objects
+        setTable(response.data.standings[0].table);
+      })
+      .catch(function (error) {
+        console.error(error);
+      });
+  }, [selectedLeague]);
 
   return (
     <>
@@ -65,25 +65,29 @@ function LeagueTable() {
         <League
           imgLink="https://img.icons8.com/color/48/000000/england.png"
           leagueName="Premier League"
-          function={handleClick}
+          function1={handleClick}
+          function2={handleClick}
           name="PL"
         />
         <League
           imgLink="https://img.icons8.com/color/48/000000/spain-2.png"
           leagueName="La Liga"
-          function={handleClick}
+          function1={handleClick}
+          function2={handleClick}
           name="PD"
         />
         <League
           imgLink="https://img.icons8.com/color/48/000000/italy.png"
           leagueName="Serie A"
-          function={handleClick}
+          function1={handleClick}
+          function2={handleClick}
           name="SA"
         />
         <League
           imgLink="https://img.icons8.com/color/48/000000/germany.png"
           leagueName="Bundesliga"
-          function={handleClick}
+          function1={handleClick}
+          function2={handleClick}
           name="BL1"
         />
       </div>

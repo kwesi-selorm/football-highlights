@@ -1,3 +1,18 @@
+html {
+  background-color: #393e46;
+  height: 100%;
+  text-align: center;
+  width: 100%;
+}
+
+.leagues {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  margin-top: 0.5rem;
+  justify-content: center;
+}
+
 .item1 {
   grid-area: A;
   position: relative;
