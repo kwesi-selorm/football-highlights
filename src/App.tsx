@@ -1,24 +1,34 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import "./App.css";
+import "../styles/Navbar.module.css";
+import Matches from "./components/Matches";
+import LeagueTable from "./components/LeagueTable";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Router>
+        {/* Navbar  with links to the matches and league table pages */}
+        <nav>
+          <div className="nav">
+            <div className="navbarLink">
+              <Link to="/">Scores </Link>
+            </div>
+            {"|"}
+            <div className="navbarLink">
+              <Link to="/LeagueTable"> League Table</Link>
+            </div>
+          </div>
+        </nav>
+
+        {/* Pages to be rendered */}
+        <Switch>
+          <Route path="/" element={<Matches />} />
+        </Switch>
+        <Switch>
+          <Route path="/LeagueTable" element={<LeagueTable />} />
+        </Switch>
+      </Router>
     </div>
   );
 }

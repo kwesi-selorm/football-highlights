@@ -1,0 +1,39 @@
+.item1 {
+  grid-area: A;
+  position: relative;
+  text-align: center;
+}
+
+.time {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 30%;
+  transform: translate(0, -50%);
+}
+
+.item2 {
+  grid-area: B;
+}
+
+.item3 {
+  grid-area: C;
+}
+
+.item4 {
+  grid-area: D;
+}
+
+.item5 {
+  grid-area: E;
+}
+
+.gridContainer {
+  color: #fff;
+  display: grid;
+  grid-template-columns: 1fr 3fr 1fr;
+  grid-template-areas:
+    "A B C"
+    "A D E";
+  width: 100%;
+}

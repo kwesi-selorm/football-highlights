@@ -1,0 +1,17 @@
+.timeList {
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
+  justify-content: space-between;
+}
+
+.timeButton {
+  background-color: #393e46;
+  border: none;
+  color: #eee;
+  padding: 5px 10px;
+}
+
+.timeButton:hover {
+  cursor: pointer;
+}

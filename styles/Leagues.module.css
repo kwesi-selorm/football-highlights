@@ -1,0 +1,41 @@
+@media (max-width: 1700) {
+  .leagues {
+    flex-direction: column;
+  }
+}
+
+.leagueButton {
+  background-color: #222831;
+  border: none;
+  border-radius: 5px;
+  color: #eeeeee;
+  font-weight: 500;
+  min-width: 15rem;
+  outline: none;
+  padding: 5px;
+  transition-property: box-shadow;
+  transition-duration: 0.5s;
+  min-width: fit-content;
+
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  place-items: center;
+  text-align: left;
+}
+
+.leagueButton:hover {
+  box-shadow: 0 0 0 1.5px #eeeeee;
+  cursor: pointer;
+  outline: none;
+}
+
+.countryFlag {
+  margin-top: 3px;
+}
+
+.leagueName {
+  font-size: 1.1rem;
+  margin: 3px 0 0;
+  text-align: left;
+}

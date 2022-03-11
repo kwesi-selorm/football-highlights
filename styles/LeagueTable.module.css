@@ -1,0 +1,56 @@
+.leagues {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  margin-top: 0.5rem;
+  justify-content: center;
+}
+
+.container {
+  background-color: #393e46;
+  margin: 0;
+  text-align: center;
+}
+
+.leagueTable {
+  color: #eeeeee;
+  margin: 0 auto;
+  width: 80%;
+}
+
+.tableHeader {
+  font-weight: bold;
+  text-align: left;
+
+  display: grid;
+  grid-template-columns: 0.8fr 4.5fr repeat(5, 1fr);
+  padding-top: 1.5rem;
+}
+
+.clubRow {
+  text-align: left;
+
+  display: grid;
+  grid-auto-flow: column;
+  grid-template-columns: 0.8fr 0.5fr 4fr repeat(5, 1fr);
+}
+
+.crestImage {
+  margin-right: 5%;
+  bottom: 0%;
+}
+
+.clubRow:last-child {
+  padding-bottom: 10rem;
+}
+
+@media (max-width: 1700px) {
+  .leagueTable,
+  .clubRow {
+    font-size: 0.8rem;
+  }
+
+  .container {
+    width: 100%;
+  }
+}
