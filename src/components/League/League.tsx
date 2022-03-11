@@ -1,5 +1,4 @@
-import leagueStyles from "../styles/Leagues.module.css";
-import Image from "next/image";
+import "./Leagues.css";
 import { MouseEventHandler } from "react";
 
 type Props = {
@@ -12,21 +11,21 @@ type Props = {
 function League(props: Props) {
   return (
     <button
-      className={leagueStyles.leagueButton}
+      className="leagueButton"
       onClick={props.function}
       name={props.name}
     >
       <span>
-        <Image
+        <img
           alt=""
           width={20}
           height={20}
-          className={leagueStyles.countryFlag}
+          className="countryFlag"
           src={props.imgLink}
         />
       </span>
 
-      <p className={leagueStyles.leagueName}>{props.leagueName}</p>
+      <p className="leagueName">{props.leagueName}</p>
     </button>
   );
 }

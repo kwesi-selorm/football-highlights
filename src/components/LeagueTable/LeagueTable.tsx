@@ -1,6 +1,6 @@
 import { MouseEvent, useEffect, useState } from "react";
-import League from "./League";
-import "../../styles/LeagueTable.module.css";
+import League from "../League/League";
+import "./LeagueTable.css";
 
 interface Team {
   id: number;
@@ -18,10 +18,15 @@ interface Club {
   team: Team;
 }
 
+type Data = {
+  standings: [];
+};
+
 // https://stackoverflow.com/questions/54513548/destructure-a-function-parameter-in-typescript
 function LeagueTable() {
   const [leagueAbbrev, setLeagueAbbrev] = useState("PL");
   const [data, setData] = useState(null);
+  const [table, setTable] = useState(null);
 
   function handleClick(e: MouseEvent) {
     const target = e.target as HTMLButtonElement;
@@ -31,23 +36,26 @@ function LeagueTable() {
   }
 
   useEffect(() => {
-    fetch(
-      "https://api.football-data.org/v2/competitions/" + "PL" + "/standings",
-      {
-        method: "GET",
-        headers: {
-          "X-Auth-Token": "ed952d5bc85e4aa2821b1b08b622bdcc",
-        },
-      }
-    )
+    fetch("https://api.football-data.org/v2/competitions/PL/standings", {
+      method: "GET",
+      headers: {
+        "X-Auth-Token": "ed952d5bc85e4aa2821b1b08b622bdcc",
+      },
+    })
       .then((response) => response.json())
       .then(setData)
       .catch((err) => console.error(err));
   }, []);
 
-  console.log(data);
+  if (data) {
+    console.log("data:", data);
+    setTable(data.standings[0].table);
+  }
 
-  //  const standings = response.standings;
+  // console.log(data.standings)
+  // const table = data.standings[0].table;
+
+  // const standings =
   //  // table is an array of 20 club objects
   //  const table = standings[0].table;
 
@@ -90,24 +98,24 @@ function LeagueTable() {
             <p>L</p>
             <p>PTS</p>
           </div>
-          {table.map((table) => (
-            <div className="clubRow" key={table.team.id}>
-              <p>{table.position}</p>
+          {table.map((club: Club) => (
+            <div className="clubRow" key={club.team.id}>
+              <p>{club.position}</p>
               <p className="clubCrestAndName">
                 <img
-                  src={table.team.crestUrl}
+                  src={club.team.crestUrl}
                   width={20}
                   height={20}
                   alt=""
                   className="crestImage"
                 />
               </p>
-              <p>{table.team.name}</p>
-              <p>{table.playedGames}</p>
-              <p>{table.won}</p>
-              <p>{table.draw}</p>
-              <p>{table.lost}</p>
-              <p>{table.points}</p>
+              <p>{club.team.name}</p>
+              <p>{club.playedGames}</p>
+              <p>{club.won}</p>
+              <p>{club.draw}</p>
+              <p>{club.lost}</p>
+              <p>{club.points}</p>
             </div>
           ))}
         </div>

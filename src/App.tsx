@@ -1,8 +1,9 @@
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route, Link, Routes } from "react-router-dom";
 import "./App.css";
-import "../styles/Navbar.module.css";
-import Matches from "./components/Matches";
-import LeagueTable from "./components/LeagueTable";
+import Footer from "./components/Footer/Footer";
+import Matches from "./components/Matches/Matches";
+import LeagueTable from "./components/LeagueTable/LeagueTable";
+import { FaFutbol } from "react-icons/fa";
 
 function App() {
   return (
@@ -21,14 +22,19 @@ function App() {
           </div>
         </nav>
 
+        {/* Title */}
+        <h1 className="title">
+          <FaFutbol /> Football Highlights
+        </h1>
+
         {/* Pages to be rendered */}
-        <Switch>
+        <Routes>
           <Route path="/" element={<Matches />} />
-        </Switch>
-        <Switch>
           <Route path="/LeagueTable" element={<LeagueTable />} />
-        </Switch>
+        </Routes>
       </Router>
+
+      <Footer />
     </div>
   );
 }
