@@ -4,35 +4,7 @@ import axios from "axios";
 import League from "../League/League";
 import MatchTimes from "../MatchTimes/MatchTimes";
 import moment from "moment";
-import { match } from "assert";
-
-interface HomeTeam {
-  id?: number;
-  name: string;
-}
-
-interface AwayTeam {
-  id?: number;
-  name: string;
-}
-
-interface FullTime {
-  homeTeam: number;
-  awayTeam: number;
-}
-
-interface Score {
-  fullTime: FullTime;
-}
-
-interface Match {
-  id: number;
-  status: string;
-  utcDate: string;
-  homeTeam: HomeTeam;
-  awayTeam: AwayTeam;
-  score: Score;
-}
+import { Match } from "../../types";
 
 function Matches() {
   // Get today's date to carry out initial fetch. Modify date later based on user selection
@@ -41,6 +13,7 @@ function Matches() {
   matchDate = "dateFrom=" + matchDate + "&dateTo=" + matchDate;
   console.log(matchDate);
 
+  // const [live, setLive] = useState(false);
   const [gameDate, setGameDate] = useState(matchDate);
   const [matches, setMatches] = useState([]);
   const [selectedLeague, setSelectedLeague] = useState("PL");
@@ -49,8 +22,8 @@ function Matches() {
   );
 
   // Change the league name in the API request URL when the league button is clicked.
-  //handleClick function can be improved
-  function handleClick(event: {
+  //handleClickLeague function can be improved
+  function handleClickLeague(event: {
     preventDefault: () => void;
     currentTarget: any;
   }) {
@@ -86,29 +59,29 @@ function Matches() {
         <League
           imgLink="https://img.icons8.com/color/48/000000/england.png"
           leagueName="Premier League"
-          function1={handleClick}
-          function2={handleClick}
+          function1={handleClickLeague}
+          function2={handleClickLeague}
           name="PL"
         />
         <League
           imgLink="https://img.icons8.com/color/48/000000/spain-2.png"
           leagueName="La Liga"
-          function1={handleClick}
-          function2={handleClick}
+          function1={handleClickLeague}
+          function2={handleClickLeague}
           name="PD"
         />
         <League
           imgLink="https://img.icons8.com/color/48/000000/italy.png"
           leagueName="Serie A"
-          function1={handleClick}
-          function2={handleClick}
+          function1={handleClickLeague}
+          function2={handleClickLeague}
           name="SA"
         />
         <League
           imgLink="https://img.icons8.com/color/48/000000/germany.png"
           leagueName="Bundesliga"
-          function1={handleClick}
-          function2={handleClick}
+          function1={handleClickLeague}
+          function2={handleClickLeague}
           name="BL1"
         />
       </div>

@@ -1,13 +1,5 @@
 import "./Leagues.css";
-import { MouseEventHandler } from "react";
-
-type Props = {
-  imgLink: string;
-  leagueName: string;
-  name: string;
-  function1: MouseEventHandler<HTMLButtonElement> | undefined;
-  function2: MouseEventHandler<HTMLButtonElement> | undefined;
-};
+import { Props } from "../../types";
 
 function League(props: Props) {
   return (
