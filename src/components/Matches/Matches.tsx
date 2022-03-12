@@ -3,6 +3,8 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import League from "../League/League";
 import MatchTimes from "../MatchTimes/MatchTimes";
+import moment from "moment";
+import { match } from "assert";
 
 interface HomeTeam {
   id?: number;
@@ -33,8 +35,18 @@ interface Match {
 }
 
 function Matches() {
+  // Get today's date to carry out initial fetch. Modify date later based on user selection
+  // of match times. Slice to copy only the date section
+  let matchDate = moment().format().slice(0, 10);
+  matchDate = "dateFrom=" + matchDate + "&dateTo=" + matchDate;
+  console.log(matchDate);
+
+  const [gameDate, setGameDate] = useState(matchDate);
   const [matches, setMatches] = useState([]);
   const [selectedLeague, setSelectedLeague] = useState("PL");
+  const [url, setUrl] = useState(
+    "https://api.football-data.org/v2/matches?" + matchDate
+  );
 
   // Change the league name in the API request URL when the league button is clicked.
   //handleClick function can be improved
@@ -44,6 +56,12 @@ function Matches() {
   }) {
     const target = event.currentTarget as HTMLButtonElement;
     setSelectedLeague(target.name);
+    setUrl(
+      "https://api.football-data.org/v2/competitions/" +
+        selectedLeague +
+        "/matches?" +
+        gameDate
+    );
     console.log(selectedLeague);
   }
 
@@ -52,17 +70,14 @@ function Matches() {
     axios
       .request({
         method: "GET",
-        url:
-          "https://api.football-data.org/v2/competitions/" +
-          selectedLeague +
-          "/matches?dateFrom=2022-03-12&dateTo=2022-03-12",
+        url: url,
         headers: { "X-Auth-Token": "ed952d5bc85e4aa2821b1b08b622bdcc" },
       })
       .then((response) => {
         setMatches(response.data.matches);
       })
       .catch((error) => console.error(error));
-  }, [selectedLeague]);
+  }, [selectedLeague, url]);
 
   return (
     <>

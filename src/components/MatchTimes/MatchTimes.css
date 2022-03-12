@@ -15,5 +15,8 @@
 }
 
 .timeButton:hover {
+  background-color: #222831;
+  border-radius: 3px;
+  outline: 2px solid #eee;
   cursor: pointer;
 }

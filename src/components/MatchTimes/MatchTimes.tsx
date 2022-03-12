@@ -9,7 +9,10 @@ function MatchTimes() {
 
   return (
     <div className="timeList">
-      <button className="timeButton" style={{ backgroundColor: "#9B0000" }}>
+      <button
+        className="timeButton"
+        style={{ backgroundColor: "#9B0000", borderRadius: "3px" }}
+      >
         Live
       </button>
       <button className="timeButton">{twoDaysAgo}</button>
