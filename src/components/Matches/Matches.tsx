@@ -34,27 +34,35 @@ interface Match {
 
 function Matches() {
   const [matches, setMatches] = useState([]);
+  const [selectedLeague, setSelectedLeague] = useState("PL");
 
-  // Function to change name of league used in fetching match data
-  function handleClick() {
-    console.log("clicked");
+  // Change the league name in the API request URL when the league button is clicked.
+  //handleClick function can be improved
+  function handleClick(event: {
+    preventDefault: () => void;
+    currentTarget: any;
+  }) {
+    const target = event.currentTarget as HTMLButtonElement;
+    setSelectedLeague(target.name);
+    console.log(selectedLeague);
   }
 
-  // Implement data fetching using axios, extract matches details
+  // Fetch matches info for played or scheduled matches
   useEffect(() => {
     axios
       .request({
         method: "GET",
-        url: "https://api.football-data.org/v2/competitions/PL/matches?dateFrom=2022-03-10&dateTo=2022-03-10",
+        url:
+          "https://api.football-data.org/v2/competitions/" +
+          selectedLeague +
+          "/matches?dateFrom=2022-03-12&dateTo=2022-03-12",
         headers: { "X-Auth-Token": "ed952d5bc85e4aa2821b1b08b622bdcc" },
       })
       .then((response) => {
-        console.log(response.data.matches);
         setMatches(response.data.matches);
-        // console.log(matches);
       })
       .catch((error) => console.error(error));
-  }, []);
+  }, [selectedLeague]);
 
   return (
     <>
@@ -94,36 +102,35 @@ function Matches() {
       <MatchTimes />
 
       {/* Matches list container */}
-      <div className="gridContainer">
-        {matches.map((match: Match) => {
-          return (
-            <div>
-              {/* Match time div */}
-              <div className="gridItem item1">
-                <p key={match.id} className="time">
-                  {match.utcDate.slice(11, 16)}
-                </p>
-              </div>
 
-              {/* Home team name div */}
-              <div className="gridItem item2">{match.homeTeam.name}</div>
-
-              {/* Home team score div */}
-              <div className="gridItem item3">
-                {match.score.fullTime.homeTeam}
-              </div>
-
-              {/* Away team name div */}
-              <div className="gridItem item4">{match.awayTeam.name}</div>
-
-              {/* Away team score div */}
-              <div className="gridItem item5">
-                {match.score.fullTime.awayTeam}
-              </div>
+      {matches.map((match: Match) => {
+        return (
+          <div className="gridContainer">
+            {/* Match time div */}
+            <div className="gridItem item1">
+              <p key={match.id} className="time">
+                {match.utcDate.slice(11, 16)}
+              </p>
             </div>
-          );
-        })}
-      </div>
+
+            {/* Home team name div */}
+            <div className="gridItem item2">{match.homeTeam.name}</div>
+
+            {/* Home team score div */}
+            <div className="gridItem item3">
+              {match.score.fullTime.homeTeam}
+            </div>
+
+            {/* Away team name div */}
+            <div className="gridItem item4">{match.awayTeam.name}</div>
+
+            {/* Away team score div */}
+            <div className="gridItem item5">
+              {match.score.fullTime.awayTeam}
+            </div>
+          </div>
+        );
+      })}
     </>
   );
 }

@@ -13,6 +13,12 @@ html {
   justify-content: center;
 }
 
+/* General grid items styles */
+.gridItem {
+  text-align: left;
+}
+
+/* Time div */
 .item1 {
   grid-area: A;
   position: relative;
@@ -27,29 +33,37 @@ html {
   transform: translate(0, -50%);
 }
 
+/* Home team name div */
 .item2 {
   grid-area: B;
 }
 
+/* Home team score div */
 .item3 {
   grid-area: C;
+  text-align: center;
 }
 
+/* Away team name div */
 .item4 {
   grid-area: D;
 }
 
+/* Away team score div */
 .item5 {
   grid-area: E;
+  text-align: center;
 }
 
 .gridContainer {
   color: #fff;
+  margin: 2rem auto;
+  width: 50%;
+
   display: grid;
   grid-template-columns: 1fr 3fr 1fr;
   grid-template-areas:
     "A B C"
     "A D E";
   grid-auto-flow: row;
-  width: 100%;
 }

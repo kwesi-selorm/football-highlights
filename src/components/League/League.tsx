@@ -4,9 +4,9 @@ import { MouseEventHandler } from "react";
 type Props = {
   imgLink: string;
   leagueName: string;
-  name?: string;
-  function1?: MouseEventHandler<HTMLButtonElement> | undefined;
-  function2?: MouseEventHandler<HTMLButtonElement> | undefined;
+  name: string;
+  function1: MouseEventHandler<HTMLButtonElement> | undefined;
+  function2: MouseEventHandler<HTMLButtonElement> | undefined;
 };
 
 function League(props: Props) {
