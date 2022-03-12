@@ -34,6 +34,7 @@ html {
 
 .timeButton:active {
   background-color: #222831;
+  transform: scale(0.98);
 }
 
 .timeButton:hover {
@@ -86,14 +87,37 @@ html {
 }
 
 .gridContainer {
+  background-color: #222831;
+  border-radius: 10px;
   color: #fff;
   margin: 1rem auto 0;
-  width: 65%;
+  padding: 0.5rem 0;
+  width: 70%;
 
   display: grid;
-  grid-template-columns: 1fr 3fr 1fr;
+  grid-template-columns: 1fr 3fr 0.7fr;
   grid-template-areas:
     "A B C"
     "A D E";
   grid-auto-flow: row;
+}
+
+@media (max-width: 500px) {
+  .leagues {
+    flex-direction: column;
+  }
+
+  .timeList {
+    flex-direction: column;
+    gap: 0.3rem;
+
+    margin: 1rem auto 3rem;
+    width: 50%;
+  }
+
+  .gridContainer {
+    gap: 5px;
+    grid-template-columns: 1.5fr 3fr 0.7fr;
+    width: 90%;
+  }
 }

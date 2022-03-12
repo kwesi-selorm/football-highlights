@@ -4,27 +4,20 @@ import Footer from "./components/Footer/Footer";
 import Matches from "./components/Matches/Matches";
 import LeagueTable from "./components/LeagueTable/LeagueTable";
 import { FaFutbol } from "react-icons/fa";
+import Navbar from "./components/Navbar/Navbar";
 
 function App() {
   return (
     <div className="App">
       <Router>
         {/* Navbar  with links to the matches and league table pages */}
-        <nav>
-          <div className="nav">
-            <div className="navbarLink">
-              <Link to="/">Scores </Link>
-            </div>
-            {"|"}
-            <div className="navbarLink">
-              <Link to="/LeagueTable"> League Table</Link>
-            </div>
-          </div>
-        </nav>
+        <Navbar />
 
         {/* Title */}
         <h1 className="title">
-          <FaFutbol /> Football Highlights
+          <FaFutbol />
+          <br />
+          Football Highlights
         </h1>
 
         {/* Pages to be rendered */}
@@ -34,6 +27,7 @@ function App() {
         </Routes>
       </Router>
 
+      {/* Footer on both pages */}
       <Footer />
     </div>
   );

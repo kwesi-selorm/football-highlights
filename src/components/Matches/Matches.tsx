@@ -31,8 +31,8 @@ function Matches() {
   let twoDaysFromNowDate = moment().add(2, "days").format().slice(0, 10);
 
   //Change list of matches based on user-selected match date
-  function handleClickDate(event: { currentTarget: any }) {
-    const target = event.currentTarget as HTMLButtonElement;
+  function handleClickDate(event: { currentTarget: HTMLButtonElement }) {
+    const target = event.currentTarget;
     setMatchDate(target.name);
     setUrl(
       "https://api.football-data.org/v2/competitions/" +
@@ -48,10 +48,7 @@ function Matches() {
 
   // Change the league name in the API request URL when the league button is clicked.
   //handleClickLeague function can be improved
-  function handleClickLeague(event: {
-    preventDefault: () => void;
-    currentTarget: any;
-  }) {
+  function handleClickLeague(event: { currentTarget: any }) {
     const target = event.currentTarget as HTMLButtonElement;
     setSelectedLeague(target.name);
     setUrl(
