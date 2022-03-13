@@ -113,7 +113,7 @@ function Matches() {
       {/* Match times component */}
       <div className="timeList">
         <button
-          className="timeButton"
+          className="timeButton liveButton"
           style={{ backgroundColor: "#9B0000", borderRadius: "3px" }}
         >
           Live

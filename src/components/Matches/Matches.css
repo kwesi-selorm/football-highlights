@@ -21,8 +21,9 @@ html {
   gap: 0.5rem;
   justify-content: center;
 
+  align-items: center;
   margin-top: 1rem;
-  margin-bottom: 3rem;
+  margin-bottom: 2rem;
 }
 
 .timeButton {
@@ -30,6 +31,7 @@ html {
   border: none;
   color: #eee;
   padding: 5px 10px;
+  width: max-content;
 }
 
 .timeButton:active {
@@ -44,6 +46,21 @@ html {
   cursor: pointer;
 }
 
+.liveButton {
+  animation: blink 1s infinite;
+  font-weight: 500;
+}
+
+@keyframes blink {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0.5;
+  }
+}
+
 /* General grid items styles */
 .gridItem {
   text-align: left;
@@ -53,14 +70,14 @@ html {
 .item1 {
   grid-area: A;
   position: relative;
-  text-align: center;
+  /* text-align: left; */
 }
 
 .time {
   margin: 0;
   position: absolute;
   top: 50%;
-  left: 30%;
+  left: 20%;
   transform: translate(0, -50%);
 }
 
@@ -92,10 +109,10 @@ html {
   color: #fff;
   margin: 1rem auto 0;
   padding: 0.5rem 0;
-  width: 60%;
+  width: 50%;
 
   display: grid;
-  grid-template-columns: 0.8fr 3fr 0.7fr;
+  grid-template-columns: 0.6fr 3fr 0.7fr;
   grid-template-areas:
     "A B C"
     "A D E";

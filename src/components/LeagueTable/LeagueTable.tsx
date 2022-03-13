@@ -108,8 +108,8 @@ function LeagueTable() {
               <p className="clubCrestAndName">
                 <img
                   src={club.team.crestUrl}
-                  width={20}
-                  height={20}
+                  width={25}
+                  height={25}
                   alt=""
                   className="crestImage"
                 />

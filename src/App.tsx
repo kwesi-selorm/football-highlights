@@ -15,9 +15,9 @@ function App() {
 
         {/* Title */}
         <h1 className="title">
-          <FaFutbol />
-          <br />
           Football Highlights
+          <br />
+          <FaFutbol className="ball" />
         </h1>
 
         {/* Pages to be rendered */}
