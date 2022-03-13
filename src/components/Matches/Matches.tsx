@@ -43,17 +43,12 @@ function Matches() {
         "&dateTo=" +
         matchDate
     );
-    // console.log(matchDate);
-    // console.log(url);
   }
 
   // Handle live button click event
   document.querySelector(".liveButton")?.addEventListener("click", () => {
-    setUrl(
-      "https://api.football-data.org/v2/competitions/" +
-        selectedLeague +
-        "/matches?status=LIVE"
-    );
+    //Display live matches from all leagues
+    setUrl("https://api.football-data.org/v2/matches?status=LIVE");
   });
 
   // Change the league name in the API request URL when the league button is clicked.
