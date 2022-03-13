@@ -1,0 +1,28 @@
+/* News article */
+.article {
+  margin: 0 auto;
+  text-align: center;
+  width: 70%;
+}
+
+.dateTime {
+  margin: 0;
+  padding: 0;
+}
+
+.articlePhoto {
+  height: 30rem;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+.title {
+  margin: 0;
+  padding: 0;
+}
+
+.description {
+  margin: 0;
+  padding: 0;
+}
