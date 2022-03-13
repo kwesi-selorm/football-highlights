@@ -13,7 +13,7 @@ function Matches() {
   const [matchDate, setMatchDate] = useState(todayDate);
   const [gameDate] = useState("dateFrom=" + matchDate + "&dateTo=" + matchDate);
   const [matches, setMatches] = useState([]);
-  const [selectedLeague, setSelectedLeague] = useState("PL");
+  const [selectedLeague, setSelectedLeague] = useState("");
   const [url, setUrl] = useState(
     "https://api.football-data.org/v2/matches?" + gameDate
   );
@@ -34,6 +34,7 @@ function Matches() {
   function handleClickDate(event: { currentTarget: HTMLButtonElement }) {
     const target = event.currentTarget;
     setMatchDate(target.name);
+    selectedLeague === "" && setSelectedLeague("PL");
     setUrl(
       "https://api.football-data.org/v2/competitions/" +
         selectedLeague +
