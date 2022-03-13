@@ -106,13 +106,7 @@ function LeagueTable() {
             <div className="clubRow" key={club.team.id}>
               <p>{club.position}</p>
               <p className="clubCrestAndName">
-                <img
-                  src={club.team.crestUrl}
-                  width={25}
-                  height={25}
-                  alt=""
-                  className="crestImage"
-                />
+                <img src={club.team.crestUrl} alt="" className="crestImage" />
               </p>
               <p>{club.team.name}</p>
               <p>{club.playedGames}</p>

@@ -36,7 +36,7 @@ html {
 
 .timeButton:active {
   background-color: #222831;
-  transform: scale(0.98);
+  transform: scale(0.9);
 }
 
 .timeButton:hover {
