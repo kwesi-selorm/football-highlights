@@ -3,8 +3,8 @@ import "./App.css";
 import Footer from "./components/Footer/Footer";
 import Matches from "./components/Matches/Matches";
 import LeagueTable from "./components/LeagueTable/LeagueTable";
-import FontAwesomeIcon from "fortawesome";
 import Navbar from "./components/Navbar/Navbar";
+const ball = require("./assets/soccer-ball.png");
 
 function App() {
   return (
@@ -14,11 +14,16 @@ function App() {
         <Navbar />
 
         {/* Title */}
-        <h1 className="title">
-          Football Highlights
-          <br />
-          <FontAwesomeIcon icon="fa-solid fa-foal-net" className="ball" />
-        </h1>
+        <div className="titleDiv">
+          <h1 className="title">Football Highlights</h1>
+
+          <img
+            src={ball}
+            alt="soccer ball"
+            style={{ width: 50 }}
+            className="ball"
+          />
+        </div>
 
         {/* Pages to be rendered */}
         <Routes>

@@ -4,24 +4,33 @@
 }
 
 /* App title */
-.title {
+.titleDiv {
+  align-items: center;
   color: #eeeeee;
+  margin: 0 auto 2rem;
+
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  justify-content: center;
+}
+
+.title {
   font-size: 2.5rem;
   font-weight: 600;
-  margin-bottom: 3rem;
   text-align: center;
 }
 
 .ball {
-  animation: rotation 10s infinite linear;
+  animation: rotation 5s linear infinite;
 }
 
 @keyframes rotation {
   from {
-    transform: rotate(0);
+    transform: rotate(0deg);
   }
   to {
-    transform: rotate(359);
+    transform: rotate(359deg);
   }
 }
 
