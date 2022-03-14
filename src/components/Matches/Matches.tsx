@@ -119,7 +119,7 @@ function Matches() {
       <div className="timeList">
         <button
           className="timeButton liveButton"
-          style={{ backgroundColor: "#9B0000", borderRadius: "3px" }}
+          style={{ backgroundColor: "#9B0000" }}
         >
           Live
         </button>
