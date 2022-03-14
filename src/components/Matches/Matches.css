@@ -128,7 +128,6 @@ html {
   }
 
   .timeList {
-    flex-direction: column;
     gap: 0.3rem;
 
     margin: 1rem auto 3rem;

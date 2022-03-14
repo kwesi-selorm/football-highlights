@@ -38,4 +38,8 @@
   .title {
     font-size: 1.8rem;
   }
+
+  .ball {
+    max-width: 30px;
+  }
 }
