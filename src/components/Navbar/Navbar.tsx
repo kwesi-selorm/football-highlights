@@ -6,11 +6,15 @@ export default function Navbar() {
     <nav>
       <div className="nav">
         <div className="navbarLink">
+          <Link to="/News">News </Link>
+        </div>
+        {"|"}
+        <div className="navbarLink">
           <Link to="/">Scores </Link>
         </div>
         {"|"}
         <div className="navbarLink">
-          <Link to="/LeagueTable"> League Table</Link>
+          <Link to="/LeagueTable"> League Tables</Link>
         </div>
       </div>
     </nav>

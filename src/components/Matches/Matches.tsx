@@ -168,9 +168,9 @@ function Matches() {
 
       {/* Matches list container */}
 
-      {matches.map((match: Match) => {
+      {matches.map((match: Match, i) => {
         return (
-          <div className="gridContainer">
+          <div className="gridContainer" key={i}>
             {/* Match time div */}
             <div className="gridItem item1">
               <p key={match.id} className="time">
