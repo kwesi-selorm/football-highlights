@@ -1,22 +1,20 @@
 import "./News.css";
 
 interface Props {
-  date: string;
-  imageUrl: string;
+  pubDate: string;
+  image_url: string;
   title: string;
   description: string;
-  url: string;
+  link: string;
 }
 
 export default function NewsArticle(props: Props) {
   return (
     <div className="article">
-      <h2 className="articleDateTime">
-        {props["date"].slice(0, 10) + ", " + props["date"].slice(11, 16)}
-      </h2>
-      <a href={props.url} target="_blank" rel="noreferrer">
+      <h2 className="articleDateTime">{props.pubDate}</h2>
+      <a href={props.link} target="_blank" rel="noreferrer">
         <img
-          src={props.imageUrl}
+          src={props.image_url}
           alt="news-article"
           className="articlePhoto"
         ></img>
@@ -26,7 +24,7 @@ export default function NewsArticle(props: Props) {
       <span>
         <a
           className="articleLink"
-          href={props.url}
+          href={props.link}
           target="_blank"
           rel="noreferrer"
         >

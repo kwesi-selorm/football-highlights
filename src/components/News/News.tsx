@@ -1,32 +1,36 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import NewsArticle from "./NewsArticle";
+const soccerball = require("../../assets/soccer-ball.png");
 
 interface Article {
   title: string;
   description: string;
-  url: string;
-  urlToImage: string;
-  publishedAt: string;
+  link: string;
+  image_url: string;
+  pubDate: string;
 }
 
 export default function News() {
   const [articles, setArticles] = useState([]);
 
   function fetchArticles() {
+    // newsdata.io API
     axios
       .request({
         method: "GET",
-        url: "https://newsapi.org/v2/top-headlines",
+        url: "https://newsdata.io/api/1/news",
         params: {
-          apiKey: "b97ef634a2e94b44a723519dbf082470",
+          apiKey: "pub_54595d431631337fae7043a69d95aa397a10",
           category: "sports",
-          country: "gb",
+          country: "gb,es,de,it,no",
+          language: "en",
         },
       })
       .then((response) => {
         //Articles is an array of fetched new article objects
-        setArticles(response.data.articles);
+        setArticles(response.data.results);
+        console.log(response.data.results);
       })
       .catch((err) => console.error(err));
   }
@@ -41,11 +45,13 @@ export default function News() {
           return (
             <NewsArticle
               key={i}
-              date={article.publishedAt}
-              imageUrl={article.urlToImage}
+              pubDate={article.pubDate}
+              image_url={
+                article.image_url == null ? soccerball : article.image_url
+              }
               title={article.title}
               description={article.description}
-              url={article.url}
+              link={article.link}
             />
           );
         })}
