@@ -40,14 +40,12 @@ html {
 
 .timeButton:hover {
   background-color: #222831;
-  border-radius: 3px;
   outline: 2px solid #eee;
   cursor: pointer;
 }
 
 .timeButton:focus {
   background-color: #00adb5;
-  border-radius: 3px;
   outline: none;
 }
 
