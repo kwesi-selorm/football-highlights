@@ -144,6 +144,7 @@ function Matches() {
           onClick={handleClickDate}
           onMouseDown={handleClickDate}
           className="timeButton"
+          autoFocus
         >
           Today
         </button>

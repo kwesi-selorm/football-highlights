@@ -35,7 +35,6 @@ html {
 }
 
 .timeButton:active {
-  background-color: #222831;
   transform: scale(0.9);
 }
 
@@ -44,6 +43,12 @@ html {
   border-radius: 3px;
   outline: 2px solid #eee;
   cursor: pointer;
+}
+
+.timeButton:focus {
+  background-color: #00adb5;
+  border-radius: 3px;
+  outline: none;
 }
 
 .liveButton {
