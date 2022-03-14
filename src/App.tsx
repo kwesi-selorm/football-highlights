@@ -27,8 +27,8 @@ function App() {
 
       {/* Pages to be rendered */}
       <Routes>
-        <Route path="/News" element={<News />} />
         <Route path="/" element={<Matches />} />
+        <Route path="/News" element={<News />} />
         <Route path="/LeagueTable" element={<LeagueTable />} />
       </Routes>
 
