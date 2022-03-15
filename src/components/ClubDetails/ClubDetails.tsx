@@ -1,6 +1,6 @@
 export default function ClubDetails() {
   return (
-    <div className="allPlayers">
+    <div className="allPlayers" hidden={true}>
       <div className="team">
         <div className="players">
           <p>Lineup</p>

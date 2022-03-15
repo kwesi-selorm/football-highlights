@@ -5,6 +5,7 @@ import League from "../League/League";
 import moment from "moment";
 import { Match } from "../../types";
 import Game from "../Game/Game";
+import ClubDetails from "../ClubDetails/ClubDetails";
 
 function Matches() {
   // Get current day's date to carry out initial fetch. Modify date later
@@ -68,7 +69,6 @@ function Matches() {
         "&dateTo=" +
         matchDate
     );
-    // console.log(url);
   }
 
   // Fetch matches info for played or scheduled matches
@@ -169,6 +169,8 @@ function Matches() {
           {twoDaysFromNow}
         </button>
       </div>
+
+      <ClubDetails />
 
       {/* Matches list container */}
 

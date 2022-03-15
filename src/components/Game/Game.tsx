@@ -1,3 +1,4 @@
+import ClubDetails from "../ClubDetails/ClubDetails";
 import "./Game.css";
 
 interface Props {
@@ -27,6 +28,8 @@ export default function Game(props: Props, i: number) {
 
       {/* Away team score div */}
       <div className="gridItem item5">{props.awayTeamScore}</div>
+
+      <ClubDetails />
     </>
   );
 }
