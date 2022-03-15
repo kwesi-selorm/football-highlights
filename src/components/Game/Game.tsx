@@ -10,10 +10,10 @@ interface Props {
 
 export default function Game(props: Props, i: number) {
   return (
-    <div className="gridContainer" key={i}>
+    <>
       {/* Match time div */}
       <div className="gridItem item1">
-        <p className="time">{props.date}</p>
+        <p className="time">{props.date.slice(11, 16)}</p>
       </div>
 
       {/* Home team name div */}
@@ -27,6 +27,6 @@ export default function Game(props: Props, i: number) {
 
       {/* Away team score div */}
       <div className="gridItem item5">{props.awayTeamScore}</div>
-    </div>
+    </>
   );
 }

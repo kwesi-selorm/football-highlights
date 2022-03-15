@@ -171,14 +171,15 @@ function Matches() {
 
       {matches.map((match: Match, i: number) => {
         return (
-          <Game
-            key={i}
-            date={match.utcDate}
-            homeTeamName={match.homeTeam.name}
-            awayTeamName={match.awayTeam.name}
-            homeTeamScore={match.score.fullTime.homeTeam}
-            awayTeamScore={match.score.fullTime.awayTeam}
-          />
+          <div className="gridContainer" key={i}>
+            <Game
+              date={match.utcDate}
+              homeTeamName={match.homeTeam.name}
+              awayTeamName={match.awayTeam.name}
+              homeTeamScore={match.score.fullTime.homeTeam}
+              awayTeamScore={match.score.fullTime.awayTeam}
+            />
+          </div>
         );
       })}
     </>

@@ -6,16 +6,15 @@
 /* Time div */
 .item1 {
   grid-area: A;
-  position: relative;
-  /* text-align: left; */
 }
 
 .time {
+  height: 100%;
   margin: 0;
-  position: absolute;
-  top: 50%;
-  left: 20%;
-  transform: translate(0, -50%);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /* Home team name div */
@@ -46,14 +45,20 @@
   color: #fff;
   margin: 1rem auto 0;
   padding: 0.5rem 0;
+  transition: transform 250ms ease-in;
   width: 50%;
 
   display: grid;
-  grid-template-columns: 0.6fr 3fr 0.7fr;
+  grid-template-columns: 0.8fr 3fr 0.7fr;
   grid-template-areas:
     "A B C"
     "A D E";
   grid-auto-flow: row;
+}
+
+.gridContainer:hover {
+  cursor: pointer;
+  transform: scale(0.95);
 }
 
 @media (max-width: 500px) {
