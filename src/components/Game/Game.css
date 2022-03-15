@@ -1,0 +1,65 @@
+/* General grid items styles */
+.gridItem {
+  text-align: left;
+}
+
+/* Time div */
+.item1 {
+  grid-area: A;
+  position: relative;
+  /* text-align: left; */
+}
+
+.time {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 20%;
+  transform: translate(0, -50%);
+}
+
+/* Home team name div */
+.item2 {
+  grid-area: B;
+}
+
+/* Home team score div */
+.item3 {
+  grid-area: C;
+  text-align: center;
+}
+
+/* Away team name div */
+.item4 {
+  grid-area: D;
+}
+
+/* Away team score div */
+.item5 {
+  grid-area: E;
+  text-align: center;
+}
+
+.gridContainer {
+  background-color: #222831;
+  border-radius: 10px;
+  color: #fff;
+  margin: 1rem auto 0;
+  padding: 0.5rem 0;
+  width: 50%;
+
+  display: grid;
+  grid-template-columns: 0.6fr 3fr 0.7fr;
+  grid-template-areas:
+    "A B C"
+    "A D E";
+  grid-auto-flow: row;
+}
+
+@media (max-width: 500px) {
+  .gridContainer {
+    gap: 5px;
+    grid-template-columns: 1.5fr 3fr 0.7fr;
+    width: 90%;
+  }
+}

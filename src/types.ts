@@ -29,7 +29,7 @@ export interface Score {
 
 export interface Match {
   id: number;
-  status: string;
+  status?: string;
   utcDate: string;
   homeTeam: HomeTeam;
   awayTeam: AwayTeam;

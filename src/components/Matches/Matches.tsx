@@ -4,6 +4,7 @@ import axios from "axios";
 import League from "../League/League";
 import moment from "moment";
 import { Match } from "../../types";
+import Game from "../Game/Game";
 
 function Matches() {
   // Get current day's date to carry out initial fetch. Modify date later
@@ -168,32 +169,16 @@ function Matches() {
 
       {/* Matches list container */}
 
-      {matches.map((match: Match, i) => {
+      {matches.map((match: Match, i: number) => {
         return (
-          <div className="gridContainer" key={i}>
-            {/* Match time div */}
-            <div className="gridItem item1">
-              <p key={match.id} className="time">
-                {match.utcDate.slice(11, 16)}
-              </p>
-            </div>
-
-            {/* Home team name div */}
-            <div className="gridItem item2">{match.homeTeam.name}</div>
-
-            {/* Home team score div */}
-            <div className="gridItem item3">
-              {match.score.fullTime.homeTeam}
-            </div>
-
-            {/* Away team name div */}
-            <div className="gridItem item4">{match.awayTeam.name}</div>
-
-            {/* Away team score div */}
-            <div className="gridItem item5">
-              {match.score.fullTime.awayTeam}
-            </div>
-          </div>
+          <Game
+            key={i}
+            date={match.utcDate}
+            homeTeamName={match.homeTeam.name}
+            awayTeamName={match.awayTeam.name}
+            homeTeamScore={match.score.fullTime.homeTeam}
+            awayTeamScore={match.score.fullTime.awayTeam}
+          />
         );
       })}
     </>
