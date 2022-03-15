@@ -1,0 +1,10 @@
+.allPlayers {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.players {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+}

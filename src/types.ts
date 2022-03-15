@@ -27,6 +27,16 @@ export interface Score {
   fullTime: FullTime;
 }
 
+export interface HomePlayer {
+  name: string;
+  shirtNumber: number;
+}
+
+export interface AwayPlayer {
+  name: string;
+  shirtNumber: number;
+}
+
 export interface Match {
   id: number;
   status?: string;
@@ -34,4 +44,8 @@ export interface Match {
   homeTeam: HomeTeam;
   awayTeam: AwayTeam;
   score: Score;
+  homeLineup?: HomePlayer[];
+  awayLineup?: AwayPlayer[];
+  homeBench?: HomePlayer[];
+  awayBench?: AwayPlayer[];
 }

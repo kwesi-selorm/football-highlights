@@ -5,6 +5,7 @@ import Matches from "./components/Matches/Matches";
 import LeagueTable from "./components/LeagueTable/LeagueTable";
 import Navbar from "./components/Navbar/Navbar";
 import News from "./components/News/News";
+import ClubDetails from "./components/ClubDetails/ClubDetails";
 const ball = require("./assets/soccer-ball.png");
 
 function App() {
@@ -28,6 +29,7 @@ function App() {
       {/* Pages to be rendered */}
       <Routes>
         <Route path="/" element={<Matches />} />
+        <Route path="clubs" element={<ClubDetails />} />
         <Route path="/News" element={<News />} />
         <Route path="/LeagueTable" element={<LeagueTable />} />
       </Routes>

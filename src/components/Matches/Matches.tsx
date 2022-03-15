@@ -10,7 +10,6 @@ function Matches() {
   // Get current day's date to carry out initial fetch. Modify date later
   let todayDate = moment().format().slice(0, 10);
 
-  // const [live, setLive] = useState(false);
   const [matchDate, setMatchDate] = useState(todayDate);
   const [gameDate] = useState("dateFrom=" + matchDate + "&dateTo=" + matchDate);
   const [matches, setMatches] = useState([]);
@@ -18,6 +17,10 @@ function Matches() {
   const [url, setUrl] = useState(
     "https://api.football-data.org/v2/matches?" + gameDate
   );
+  // const [homeLineup, setHomeLineup] = useState([]);
+  // const [homeBench, setHomeBench] = useState([]);
+  // const [awayLineup, setAwayLineup] = useState([]);
+  // const [awayBench, setAwayBench] = useState([]);
 
   // Display dates on match date buttons
   let twoDaysAgo = moment().subtract(2, "days").format("MMM Do");
